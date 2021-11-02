@@ -1,0 +1,67 @@
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <h3>Edit Person</h3>
+        </div>
+        <div class="card-body">
+            <form [formGroup]="addperson" action="Saved()">
+                <div class="form-group">
+                    <label for="">Full Name</label>
+                    <input formControlName="fullname" [(ngModel)]="person.fullname" [ngModelOptions]="{standalone: true}" name="fullname" type="text" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="">CPF</label>
+                    <input formControlName="cpf" [(ngModel)]="person.cpf" [ngModelOptions]="{standalone: true}" name="cpf" type="text" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="">Date of Birth</label>
+                    <input fromControlName="dbirth" [(ngModel)]="person.dateofbirth" [ngModelOptions]="{standalone: true}" name="dateofbirth" type="date" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="">Email</label>
+                    <input formControlName="email" [(ngModel)]="person.email" [ngModelOptions]="{standalone: true}" name="email" type="email" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="">Gender</label>
+                    <select formControlName="gender" [(ngModel)]="person.gender" [ngModelOptions]="{standalone: true}" name="gender" class="form-control">
+                        <option value="M">Male</option>
+                        <option value="F">Female</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="">Pthone Number</label>
+                    <input formControlName="phone" [(ngModel)]="person.phone" [ngModelOptions]="{standalone: true}" name="phone" type="number" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="">Description</label>
+                    <textarea formControlName="description" [(ngModel)]="person.description" [ngModelOptions]="{standalone: true}" name="description" class="form-control" cols="30" rows="10"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="">Neighborhood</label>
+                    <input formControlName="neig" type="text" [(ngModel)]="person.neighborhood" [ngModelOptions]="{standalone: true}" name="neighborhood" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="">Number</label>
+                    <input formControlName="numb" type="number" [(ngModel)]="person.number" [ngModelOptions]="{standalone: true}" name="number" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="">City</label>
+                    <input formControlName="city" type="text" [(ngModel)]="person.city" [ngModelOptions]="{standalone: true}" name="city" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="">Direction</label>
+                    <input formControlName='dir' type="text" [(ngModel)]="person.direction" [ngModelOptions]="{standalone: true}" name="direction" class="form-control">
+                </div>
+                <mat-checkbox [(ngModel)]="locate" [disabled]="!person.neighborhood || !person.number || !person.city || !person.direction"
+                      (click)="locator(person)">
+                        Locate
+                </mat-checkbox>
+                <br>
+                <div class="form-group" *ngIf="locate" >
+                    <app-map></app-map>
+                </div>
+                <button style="float: right;" (click)="Change(person)" class="btn btn-danger">Change</button>
+            </form>
+        </div>
+    </div>
+</div>
